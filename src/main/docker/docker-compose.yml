@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  app:
+    image: 'demo:latest'
+    ports:
+          - 8080:8080
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=jdbc:mysql://localhost:3306/final
+        - DATABASE_USER= dmatysiak
+        - DATABASE_PASSWORD=piesek12
+        - DATABASE_NAME=final
+        - DATABASE_PORT=3306
+
+  db:
+    image: 'mysql:8.0'
+    ports:
+          - 3307:3306
+    container_name: db
+    environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=MyAppDb
+        - MYSQL_USER=myapp-user
+        - MYSQL_PASSWORD=password
